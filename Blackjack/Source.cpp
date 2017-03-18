@@ -70,7 +70,7 @@ void bidding() {
 
 	cash = cash - bid;
 }
-//Need to add player and dealer hand, add checks to card count
+//Need to add player and dealer hand
 void cardDealing() {
 	int card = 0;
 	do {
@@ -79,51 +79,90 @@ void cardDealing() {
 		std::cout << "\nCard is " << card;
 		switch(card) {
 		case 1:
-			acecount--;
+			if (acecount >= 1){
+				acecount--;
+				dealing++;
+			}
 			break;
 		case 2:
-			twocount--;
+			if (twocount >= 1){
+				twocount--;
+				dealing++;
+			}
 			break;
 		case 3:
-			threecount--;
+			if (threecount >= 1){
+				threecount--;
+				dealing++;
+			}
 			break;
 		case 4:
-			fourcount--;
+			if (fourcount >= 1){
+				fourcount--;
+				dealing++;
+			}
 			break;
 		case 5:
-			fivecount--;
+			if (fivecount >= 1){
+				fivecount--;
+				dealing++;
+			}
 			break;
 		case 6:
-			sixcount--;
+			if (sixcount >= 1){
+				sixcount--;
+				dealing++;
+			}
+			
 			break;
 		case 7:
-			sevencount--;
+			if (sevencount >= 1){
+				sevencount--;
+				dealing++;
+			}
 			break;
 		case 8:
-			eightcount--;
+			if (eightcount >= 1){
+				eightcount--;
+				dealing++;
+			}
 			break;
 		case 9:
-			ninecount--;
+			if (ninecount >= 1){
+				ninecount--;
+				dealing++;
+			}
 			break;
 		case 10:
-			tencount--;
+			if (tencount >= 1){
+				tencount--;
+				dealing++;
+			}
 			break;
 		case 11:
-			jackcount--;
+			if (jackcount >= 1){
+				jackcount--;
+				dealing++;
+			}
 			break;
 		case 12:
-			queencount--;
+			if (queencount >= 1){
+				queencount--;
+				dealing++;
+			}
 			break;
 		case 13:
-			kingcount--;
+			if (kingcount >= 1){
+				kingcount--;
+				dealing++;
+			}
 			break;
 
 		default:
 			std::cout << "\nError generating card";
 		}
-		dealing++;
 
-	} while (dealing < 25);
+	} while (dealing < 2);
 
 
 }
