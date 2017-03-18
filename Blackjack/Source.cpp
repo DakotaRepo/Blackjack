@@ -21,7 +21,8 @@ int	fourcount = 4;
 int	threecount = 4;
 int	twocount = 4;
 int	acecount = 4;
-int dealing = 0;
+int dealingPlayer = 0;
+int dealingDealer = 0;
 
 //Need to balance this after adding in victory conditions
 void difficultySelection() {
@@ -70,91 +71,91 @@ void bidding() {
 
 	cash = cash - bid;
 }
-//Need to add player and dealer hand
-void cardDealing() {
-	int card = 0;
+//Should be good to go
+void cardInitialPlayer() {
+	int cardPlayer = 0;
 	do {
 		
-		card = (rand() % 13) + 1;
-		std::cout << "\nCard is " << card;
-		switch(card) {
+		cardPlayer = (rand() % 13) + 1;
+		std::cout << "\nCard is " << cardPlayer;
+		switch(cardPlayer) {
 		case 1:
 			if (acecount >= 1){
 				acecount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 2:
 			if (twocount >= 1){
 				twocount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 3:
 			if (threecount >= 1){
 				threecount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 4:
 			if (fourcount >= 1){
 				fourcount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 5:
 			if (fivecount >= 1){
 				fivecount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 6:
 			if (sixcount >= 1){
 				sixcount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			
 			break;
 		case 7:
 			if (sevencount >= 1){
 				sevencount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 8:
 			if (eightcount >= 1){
 				eightcount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 9:
 			if (ninecount >= 1){
 				ninecount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 10:
 			if (tencount >= 1){
 				tencount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 11:
 			if (jackcount >= 1){
 				jackcount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 12:
 			if (queencount >= 1){
 				queencount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 		case 13:
 			if (kingcount >= 1){
 				kingcount--;
-				dealing++;
+				dealingPlayer++;
 			}
 			break;
 
@@ -162,16 +163,111 @@ void cardDealing() {
 			std::cout << "\nError generating card";
 		}
 
-	} while (dealing < 2);
+	} while (dealingPlayer < 2);
 
 
 }
+void cardInitialDealer() {
+	int cardDealer = 0;
+	do {
 
+		cardDealer = (rand() % 13) + 1;
+		std::cout << "\nCard is " << cardDealer;
+		switch (cardDealer) {
+		case 1:
+			if (acecount >= 1) {
+				acecount--;
+				dealingDealer++;
+			}
+			break;
+		case 2:
+			if (twocount >= 1) {
+				twocount--;
+				dealingDealer++;
+			}
+			break;
+		case 3:
+			if (threecount >= 1) {
+				threecount--;
+				dealingDealer++;
+			}
+			break;
+		case 4:
+			if (fourcount >= 1) {
+				fourcount--;
+				dealingDealer++;
+			}
+			break;
+		case 5:
+			if (fivecount >= 1) {
+				fivecount--;
+				dealingDealer++;
+			}
+			break;
+		case 6:
+			if (sixcount >= 1) {
+				sixcount--;
+				dealingDealer++;
+			}
+
+			break;
+		case 7:
+			if (sevencount >= 1) {
+				sevencount--;
+				dealingDealer++;
+			}
+			break;
+		case 8:
+			if (eightcount >= 1) {
+				eightcount--;
+				dealingDealer++;
+			}
+			break;
+		case 9:
+			if (ninecount >= 1) {
+				ninecount--;
+				dealingDealer++;
+			}
+			break;
+		case 10:
+			if (tencount >= 1) {
+				tencount--;
+				dealingDealer++;
+			}
+			break;
+		case 11:
+			if (jackcount >= 1) {
+				jackcount--;
+				dealingDealer++;
+			}
+			break;
+		case 12:
+			if (queencount >= 1) {
+				queencount--;
+				dealingDealer++;
+			}
+			break;
+		case 13:
+			if (kingcount >= 1) {
+				kingcount--;
+				dealingDealer++;
+			}
+			break;
+
+		default:
+			std::cout << "\nError generating card";
+		}
+
+	} while (dealingDealer < 2);
+
+
+}
 void gamePlay() {
 
 
 bidding();
-cardDealing();
+cardInitialPlayer();
+cardInitialDealer();
 
 }
 
