@@ -23,6 +23,10 @@ int	twocount = 4;
 int	acecount = 4;
 int dealingPlayer = 0;
 int dealingDealer = 0;
+int playerCardOne = 0;
+int playerCardTwo = 0;
+int dealerCardOne = 0;
+int dealerCardTwo = 0;
 
 //Need to balance this after adding in victory conditions
 void difficultySelection() {
@@ -162,7 +166,9 @@ void cardInitialPlayer() {
 		default:
 			std::cout << "\nError generating card";
 		}
-
+		if (playerCardOne == 0) (playerCardOne = cardPlayer);
+		else (playerCardTwo = cardPlayer);
+	
 	} while (dealingPlayer < 2);
 
 
@@ -257,12 +263,14 @@ void cardInitialDealer() {
 		default:
 			std::cout << "\nError generating card";
 		}
-
+		if (dealerCardOne == 0) (dealerCardOne = cardDealer);
+		else (dealerCardTwo = cardDealer);
+	
 	} while (dealingDealer < 2);
 
 
 }
-void gamePlay() {
+void gameLoop() {
 
 
 bidding();
@@ -275,7 +283,7 @@ int main()
 {
 	srand(time(0));
 	difficultySelection();
-	gamePlay();
+	gameLoop();
 	std::cout << "\n1 count is " << acecount;
 	std::cout << "\n2 count is " << twocount;
 	std::cout << "\n3 count is " << threecount;
@@ -289,6 +297,11 @@ int main()
 	std::cout << "\n11 count is " << jackcount;
 	std::cout << "\n12 count is " << queencount;
 	std::cout << "\n13 count is " << kingcount;
+
+	std::cout << "\nPlayercardone count is " << playerCardOne;
+	std::cout << "\nPlayercardtwo count is " << playerCardTwo;
+	std::cout << "\nDealercardone count is " << dealerCardOne;
+	std::cout << "\nDealercardtwo count is " << dealerCardTwo;
 
 
 
