@@ -6,6 +6,7 @@
 #include <ctime>
 
 char difficulty;
+char playerChoice;
 int cash = 0;
 int bid = 0;
 int	kingcount = 4;
@@ -29,9 +30,11 @@ int dealerCardOne = 0;
 int dealerCardTwo = 0;
 int playerCardValue = 0;
 int dealerCardValue = 0;
+int cardDealer = 0;
+int cardPlayer = 0;
 bool playerIsBlackjack = false;
 bool dealerIsBlackjack = false;
-bool matchIsBlackjackTie = false;
+bool matchIsBlackjack = false;
 
 //Need to balance this after adding in victory conditions
 void difficultySelection() {
@@ -82,7 +85,6 @@ void bidding() {
 }
 //Should be good to go
 void cardInitialPlayer() {
-	int cardPlayer = 0;
 	do {
 		
 		cardPlayer = (rand() % 13) + 1;
@@ -179,7 +181,6 @@ void cardInitialPlayer() {
 
 }
 void cardInitialDealer() {
-	int cardDealer = 0;
 	do {
 
 		cardDealer = (rand() % 13) + 1;
@@ -277,26 +278,246 @@ void cardInitialDealer() {
 }
 void blackjackCheck() {
 
-	playerIsBlackjack = false;
-	dealerIsBlackjack = false;
-	matchIsBlackjackTie = false;
+	matchIsBlackjack = false;
 	
 	if (playerCardValue == 21 && dealerCardValue != 21) {
 		std::cout << "\n\nCongratulations! You have drawn a blackjack!";
 		cash = cash + (bid *2);
-		playerIsBlackjack = true;
+		matchIsBlackjack = true;
 	}
 	
 	else if (dealerCardValue == 21 && playerCardValue != 21) {
 		std::cout << "\n\nUnfortunately, the dealer has drawn a blackjack!";
 		bid = 0;
-		dealerIsBlackjack = true;
+		matchIsBlackjack = true;
 	}
 	else if (dealerCardValue == 21 & playerCardValue == 21) {
 		std::cout << "You have both drawn a blackjack! The match is a tie";
 		cash = cash + bid;
-		matchIsBlackjackTie = true;
+		matchIsBlackjack = true;
 	}
+}
+void dealingPlayerGameplay() {
+	do {
+
+		cardPlayer = (rand() % 13) + 1;
+		switch (cardPlayer) {
+		case 1:
+			if (acecount >= 1) {
+				acecount--;
+				dealingPlayer++;
+				playerCardValue++;
+				std::cout << "\nCard is Ace";
+			}
+			break;
+		case 2:
+			if (twocount >= 1) {
+				twocount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 2;
+				std::cout << "\nCard is 2";
+			}
+			break;
+		case 3:
+			if (threecount >= 1) {
+				threecount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 3;
+				std::cout << "\nCard is 3";
+			}
+			break;
+		case 4:
+			if (fourcount >= 1) {
+				fourcount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 4;
+				std::cout << "\nCard is 4";
+			}
+			break;
+		case 5:
+			if (fivecount >= 1) {
+				fivecount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 5;
+				std::cout << "\nCard is 5";
+			}
+			break;
+		case 6:
+			if (sixcount >= 1) {
+				sixcount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 6;
+				std::cout << "\nCard is 6";
+			}
+
+			break;
+		case 7:
+			if (sevencount >= 1) {
+				sevencount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 7;
+				std::cout << "\nCard is 7";
+			}
+			break;
+		case 8:
+			if (eightcount >= 1) {
+				eightcount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 8;
+				std::cout << "\nCard is 8";
+			}
+			break;
+		case 9:
+			if (ninecount >= 1) {
+				ninecount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 9;
+				std::cout << "\nCard is 9";
+			}
+			break;
+		case 10:
+			if (tencount >= 1) {
+				tencount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 10;
+				std::cout << "\nCard is 10";
+			}
+			break;
+		case 11:
+			if (jackcount >= 1) {
+				jackcount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 10;
+				std::cout << "\nCard is Jack";
+			}
+			break;
+		case 12:
+			if (queencount >= 1) {
+				queencount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 10;
+				std::cout << "\nCard is Queen";
+			}
+			break;
+		case 13:
+			if (kingcount >= 1) {
+				kingcount--;
+				dealingPlayer++;
+				playerCardValue = playerCardValue + 10;
+				std::cout << "\nCard is King";
+			}
+			break;
+
+		default:
+			std::cout << "\nError generating card";
+		}
+
+	} while (dealingPlayer < 1);
+}
+void dealingDealerGameplay() {
+	do {
+
+		cardDealer = (rand() % 13) + 1;
+		std::cout << "\nCard is " << cardDealer;
+		switch (cardDealer) {
+		case 1:
+			if (acecount >= 1) {
+				acecount--;
+				dealingDealer++;
+				dealerCardValue++;
+			}
+			break;
+		case 2:
+			if (twocount >= 1) {
+				twocount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 2;
+			}
+			break;
+		case 3:
+			if (threecount >= 1) {
+				threecount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 3;
+			}
+			break;
+		case 4:
+			if (fourcount >= 1) {
+				fourcount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 4;
+			}
+			break;
+		case 5:
+			if (fivecount >= 1) {
+				fivecount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 5;
+			}
+			break;
+		case 6:
+			if (sixcount >= 1) {
+				sixcount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 6;
+			}
+
+			break;
+		case 7:
+			if (sevencount >= 1) {
+				sevencount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 7;
+			}
+			break;
+		case 8:
+			if (eightcount >= 1) {
+				eightcount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 8;
+			}
+			break;
+		case 9:
+			if (ninecount >= 1) {
+				ninecount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 9;
+			}
+			break;
+		case 10:
+			if (tencount >= 1) {
+				tencount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 10;
+			}
+			break;
+		case 11:
+			if (jackcount >= 1) {
+				jackcount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 10;
+			}
+			break;
+		case 12:
+			if (queencount >= 1) {
+				queencount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 10;
+			}
+			break;
+		case 13:
+			if (kingcount >= 1) {
+				kingcount--;
+				dealingDealer++;
+				dealerCardValue = dealerCardValue + 10;
+			}
+			break;
+
+		default:
+			std::cout << "\nError generating card";
+		}
+
+	} while (dealingPlayer < 1);
 }
 void gamePlay() {
 	if (playerCardOne == 11 || playerCardOne == 12 || playerCardOne == 13) (playerCardOne = 10);
@@ -307,9 +528,18 @@ void gamePlay() {
 playerCardValue = (playerCardOne + playerCardTwo);
 dealerCardValue = (dealerCardOne + dealerCardTwo);
 
-std::cout << "\n\nYour card value is " << playerCardValue;
-std::cout << "\nDealer card value is " << dealerCardValue;
 blackjackCheck();
+	
+	do {
+		std::cout << "\n\nYour card value is " << playerCardValue;
+		std::cout << "\nDealer card value is " << dealerCardValue;
+		std::cout << "\n\nWould you like to[H]it or [S]tand?";
+		std::cin >> playerChoice;
+		
+		if (playerChoice == 'H' || playerChoice == 'h') dealingPlayerGameplay();
+		else if (playerChoice == 'S' || playerChoice == 's');
+		else (std::cout << "\n\nInvalid selection");
+	} while (matchIsBlackjack = false && playerChoice != 'S' || playerChoice != 's' && playerCardValue < 21);
 }
 void gameLoop() {
 
@@ -326,24 +556,6 @@ int main()
 	srand(time(0));
 	difficultySelection();
 	gameLoop();
-	std::cout << "\n1 count is " << acecount;
-	std::cout << "\n2 count is " << twocount;
-	std::cout << "\n3 count is " << threecount;
-	std::cout << "\n4 count is " << fourcount;
-	std::cout << "\n5 count is " << fivecount;
-	std::cout << "\n6 count is " << sixcount;
-	std::cout << "\n7 count is " << sevencount;
-	std::cout << "\n8 count is " << eightcount;
-	std::cout << "\n9 count is " << ninecount;
-	std::cout << "\n10 count is " << tencount;
-	std::cout << "\n11 count is " << jackcount;
-	std::cout << "\n12 count is " << queencount;
-	std::cout << "\n13 count is " << kingcount;
-
-	std::cout << "\nPlayercardone count is " << playerCardOne;
-	std::cout << "\nPlayercardtwo count is " << playerCardTwo;
-	std::cout << "\nDealercardone count is " << dealerCardOne;
-	std::cout << "\nDealercardtwo count is " << dealerCardTwo;
 
 
 
