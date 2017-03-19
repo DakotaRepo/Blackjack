@@ -27,6 +27,11 @@ int playerCardOne = 0;
 int playerCardTwo = 0;
 int dealerCardOne = 0;
 int dealerCardTwo = 0;
+int playerCardValue = 0;
+int dealerCardValue = 0;
+bool playerIsBlackjack = false;
+bool dealerIsBlackjack = false;
+bool matchIsBlackjackTie = false;
 
 //Need to balance this after adding in victory conditions
 void difficultySelection() {
@@ -270,12 +275,49 @@ void cardInitialDealer() {
 
 
 }
+void blackjackCheck() {
+
+	playerIsBlackjack = false;
+	dealerIsBlackjack = false;
+	matchIsBlackjackTie = false;
+	
+	if (playerCardValue == 21 && dealerCardValue != 21) {
+		std::cout << "\n\nCongratulations! You have drawn a blackjack!";
+		cash = cash + (bid *2);
+		playerIsBlackjack = true;
+	}
+	
+	else if (dealerCardValue == 21 && playerCardValue != 21) {
+		std::cout << "\n\nUnfortunately, the dealer has drawn a blackjack!";
+		bid = 0;
+		dealerIsBlackjack = true;
+	}
+	else if (dealerCardValue == 21 & playerCardValue == 21) {
+		std::cout << "You have both drawn a blackjack! The match is a tie";
+		cash = cash + bid;
+		matchIsBlackjackTie = true;
+	}
+}
+void gamePlay() {
+	if (playerCardOne == 11 || playerCardOne == 12 || playerCardOne == 13) (playerCardOne = 10);
+	if (playerCardTwo == 11 || playerCardTwo == 12 || playerCardTwo == 13) (playerCardTwo = 10);
+	if (dealerCardOne == 11 || dealerCardOne == 12 || dealerCardOne == 13) (dealerCardOne = 10);
+	if (dealerCardTwo == 11 || dealerCardTwo == 12 || dealerCardTwo == 13) (dealerCardTwo = 10);
+
+playerCardValue = (playerCardOne + playerCardTwo);
+dealerCardValue = (dealerCardOne + dealerCardTwo);
+
+std::cout << "\n\nYour card value is " << playerCardValue;
+std::cout << "\nDealer card value is " << dealerCardValue;
+blackjackCheck();
+}
 void gameLoop() {
 
 
 bidding();
 cardInitialPlayer();
 cardInitialDealer();
+gamePlay();
 
 }
 
