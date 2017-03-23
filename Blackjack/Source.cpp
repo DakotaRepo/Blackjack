@@ -31,6 +31,7 @@ int cardPlayer = 0;
 bool playerIsBlackjack = false;
 bool dealerIsBlackjack = false;
 bool matchIsBlackjack = false;
+bool playerDoubleDown = false;
 
 //Need to balance this after adding in victory conditions
 void difficultySelection() {
@@ -587,23 +588,31 @@ void dealingDealerGameplay() {
 void gamePlay() {
 
 	blackjackCheck();
+	playerDoubleDown = false;
 
-	while (matchIsBlackjack != true && playerChoice != 'S' && playerChoice != 's' && playerCardValue < 21) {
+	while (matchIsBlackjack == false && playerDoubleDown == false && playerChoice != 'S' && playerChoice != 's' && playerCardValue < 21) {
 		std::cout << "\n\nYour card value is " << playerCardValue;
 		std::cout << "\nDealer card value is " << dealerCardValue;
-		std::cout << "\n\nWould you like to[H]it or [S]tand?";
+		std::cout << "\n\nWould you like to [H]it, [S]tand, or [D]ouble Down?";
 		std::cin >> playerChoice;
 
 
-		if (playerChoice == 'H' || playerChoice == 'h') {
-			dealingPlayerGameplay();
-		}
+		if (playerChoice == 'H' || playerChoice == 'h') dealingPlayerGameplay();
 		
+		else if (playerChoice == 'D' || playerChoice == 'd') {
+
+			cash = cash - bid;
+			bid = bid + bid;
+			dealingPlayerGameplay();
+			playerDoubleDown = true;
+		}
+
 		else if (playerChoice == 'S' || playerChoice == 's');
+		
 		else (std::cout << "\n\nInvalid selection");
 	}
 
-	while (matchIsBlackjack != true && dealerCardValue <= 21 && dealerCardValue < playerCardValue && playerCardValue <= 21) {
+	while (matchIsBlackjack == false && dealerCardValue <= 21 && dealerCardValue < playerCardValue && playerCardValue <= 21) {
 		std::cout << "\nDealer is drawing a card";
 		dealingDealerGameplay();
 		std::cout << "\nYour card value is " << playerCardValue;
