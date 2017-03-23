@@ -74,6 +74,14 @@ void bidding() {
 			std::cin >> bid;
 		}
 		
+		if (cash < 200) {
+
+			std::cout << "\nPlease enter how much you wish to bid (1 - " << cash << ")";
+			std::cin >> bid;
+		}
+		
+		if (bid == 0 || bid > 200 || bid > cash) std::cout << "\nInvalid bid entry";
+		
 		if (std::cin.fail()) {
 			
 			std::cout << "\nError, you must enter a number\n";
@@ -81,14 +89,6 @@ void bidding() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		}
-		
-		else {
-
-			std::cout << "\nPlease enter how much you wish to bid (1 - " << cash << ")";
-			std::cin >> bid;
-		}
-		
-		if (bid == 0 || bid > 200 || bid > cash) std::cout << "\nInvalid bid entry";
 
 	} while (bid == 0 || bid > 200 || bid > cash);
 
