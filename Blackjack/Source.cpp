@@ -47,12 +47,15 @@ void difficultySelection() {
 		case 'e': case 'E':
 			cash = 300;
 			break;
+		
 		case 'n': case 'N':
 			cash = 200;
 			break;
+		
 		case 'h': case 'H':
 			cash = 100;
 			break;
+		
 		default: 
 			std::cout << "Error";
 
@@ -72,8 +75,8 @@ void bidding() {
 		}
 		
 		if (std::cin.fail()) {
+			
 			std::cout << "\nError, you must enter a number\n";
-
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -99,6 +102,7 @@ void cardInitialPlayer() {
 		switch(cardPlayer) {
 		case 1:
 			if (acecount >= 1){
+				
 				acecount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 11;
@@ -107,6 +111,7 @@ void cardInitialPlayer() {
 			break;
 		case 2:
 			if (twocount >= 1){
+				
 				twocount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 2;
@@ -115,6 +120,7 @@ void cardInitialPlayer() {
 			break;
 		case 3:
 			if (threecount >= 1){
+				
 				threecount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 3;
@@ -123,6 +129,7 @@ void cardInitialPlayer() {
 			break;
 		case 4:
 			if (fourcount >= 1){
+				
 				fourcount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 4;
@@ -131,6 +138,7 @@ void cardInitialPlayer() {
 			break;
 		case 5:
 			if (fivecount >= 1){
+				
 				fivecount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 5;
@@ -139,6 +147,7 @@ void cardInitialPlayer() {
 			break;
 		case 6:
 			if (sixcount >= 1){
+				
 				sixcount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 6;
@@ -148,6 +157,7 @@ void cardInitialPlayer() {
 			break;
 		case 7:
 			if (sevencount >= 1){
+				
 				sevencount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 7;
@@ -156,6 +166,7 @@ void cardInitialPlayer() {
 			break;
 		case 8:
 			if (eightcount >= 1){
+				
 				eightcount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 8;
@@ -164,6 +175,7 @@ void cardInitialPlayer() {
 			break;
 		case 9:
 			if (ninecount >= 1){
+				
 				ninecount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 9;
@@ -172,6 +184,7 @@ void cardInitialPlayer() {
 			break;
 		case 10:
 			if (tencount >= 1){
+				
 				tencount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 10;
@@ -180,6 +193,7 @@ void cardInitialPlayer() {
 			break;
 		case 11:
 			if (jackcount >= 1){
+				
 				jackcount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 10;
@@ -188,6 +202,7 @@ void cardInitialPlayer() {
 			break;
 		case 12:
 			if (queencount >= 1){
+				
 				queencount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 10;
@@ -196,6 +211,7 @@ void cardInitialPlayer() {
 			break;
 		case 13:
 			if (kingcount >= 1){
+				
 				kingcount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 10;
@@ -209,6 +225,7 @@ void cardInitialPlayer() {
 
 	} while (dealingPlayer < 2);
 
+	std::cout << "\n";
 
 }
 void cardInitialDealer() {
@@ -218,6 +235,7 @@ void cardInitialDealer() {
 		switch (cardDealer) {
 		case 1:
 			if (acecount >= 1) {
+				
 				acecount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 11;
@@ -226,6 +244,7 @@ void cardInitialDealer() {
 			break;
 		case 2:
 			if (twocount >= 1) {
+				
 				twocount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 2;
@@ -234,6 +253,7 @@ void cardInitialDealer() {
 			break;
 		case 3:
 			if (threecount >= 1) {
+				
 				threecount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 3;
@@ -242,6 +262,7 @@ void cardInitialDealer() {
 			break;
 		case 4:
 			if (fourcount >= 1) {
+				
 				fourcount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 4;
@@ -250,6 +271,7 @@ void cardInitialDealer() {
 			break;
 		case 5:
 			if (fivecount >= 1) {
+				
 				fivecount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 5;
@@ -258,6 +280,7 @@ void cardInitialDealer() {
 			break;
 		case 6:
 			if (sixcount >= 1) {
+				
 				sixcount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 6;
@@ -267,6 +290,7 @@ void cardInitialDealer() {
 			break;
 		case 7:
 			if (sevencount >= 1) {
+				
 				sevencount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 7;
@@ -275,6 +299,7 @@ void cardInitialDealer() {
 			break;
 		case 8:
 			if (eightcount >= 1) {
+				
 				eightcount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 8;
@@ -283,6 +308,7 @@ void cardInitialDealer() {
 			break;
 		case 9:
 			if (ninecount >= 1) {
+				
 				ninecount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 9;
@@ -291,6 +317,7 @@ void cardInitialDealer() {
 			break;
 		case 10:
 			if (tencount >= 1) {
+				
 				tencount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 10;
@@ -299,6 +326,7 @@ void cardInitialDealer() {
 			break;
 		case 11:
 			if (jackcount >= 1) {
+				
 				jackcount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 10;
@@ -307,6 +335,7 @@ void cardInitialDealer() {
 			break;
 		case 12:
 			if (queencount >= 1) {
+				
 				queencount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 10;
@@ -315,6 +344,7 @@ void cardInitialDealer() {
 			break;
 		case 13:
 			if (kingcount >= 1) {
+				
 				kingcount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 10;
@@ -335,18 +365,21 @@ void blackjackCheck() {
 	matchIsBlackjack = false;
 	
 	if (playerCardValue == 21 && dealerCardValue != 21) {
+		
 		std::cout << "\n\nCongratulations! You have drawn a blackjack!";
 		cash = cash + (bid *2);
 		matchIsBlackjack = true;
 	}
 	
 	else if (dealerCardValue == 21 && playerCardValue != 21) {
+		
 		std::cout << "\n\nUnfortunately, the dealer has drawn a blackjack!";
 		bid = 0;
 		matchIsBlackjack = true;
 	}
 	else if (dealerCardValue == 21 & playerCardValue == 21) {
-		std::cout << "You have both drawn a blackjack! The match is a tie";
+		
+		std::cout << "\n\nYou have both drawn a blackjack! The match is a tie";
 		cash = cash + bid;
 		matchIsBlackjack = true;
 	}
@@ -591,6 +624,7 @@ void gamePlay() {
 	playerDoubleDown = false;
 
 	while (matchIsBlackjack == false && playerDoubleDown == false && playerChoice != 'S' && playerChoice != 's' && playerCardValue < 21) {
+		
 		std::cout << "\n\nYour card value is " << playerCardValue;
 		std::cout << "\nDealer card value is " << dealerCardValue;
 		std::cout << "\n\nWould you like to [H]it, [S]tand, or [D]ouble Down?";
@@ -613,10 +647,35 @@ void gamePlay() {
 	}
 
 	while (matchIsBlackjack == false && dealerCardValue <= 21 && dealerCardValue < playerCardValue && playerCardValue <= 21) {
+		
 		std::cout << "\nDealer is drawing a card";
 		dealingDealerGameplay();
 		std::cout << "\nYour card value is " << playerCardValue;
 		std::cout << "\nDealer card value is " << dealerCardValue << "\n";
+	}
+
+	if (matchIsBlackjack == false && playerCardValue > dealerCardValue && playerCardValue <= 21 || matchIsBlackjack == false && playerCardValue <= 21 && dealerCardValue > 21) {
+
+		bid = bid + bid;
+		cash = cash + bid;
+		std::cout << "\nCongratulations, you have won this round!";
+		std::cout << "\n\nPlayer final card value " << playerCardValue << "\nDealer final card value " << dealerCardValue;
+
+	}
+
+	if (matchIsBlackjack == false && dealerCardValue > playerCardValue && dealerCardValue <= 21 || matchIsBlackjack == false && dealerCardValue <= 21 && playerCardValue > 21) {
+
+		std::cout << "\n\nUnfortunately, the dealer has won this round!";
+		std::cout << "\n\nPlayer final card value " << playerCardValue << "\nDealer final card value " << dealerCardValue;
+
+	}
+
+	if (matchIsBlackjack == false && playerCardValue == dealerCardValue) {
+
+		cash = cash + bid;
+		std::cout << "\nYou and the dealer have tied!";
+		std::cout << "\n\nPlayer final card value " << playerCardValue << "\nDealer final card value " << dealerCardValue;
+
 	}
 }
 void gameLoop() {
