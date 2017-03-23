@@ -367,7 +367,8 @@ void blackjackCheck() {
 	if (playerCardValue == 21 && dealerCardValue != 21) {
 		
 		std::cout << "\n\nCongratulations! You have drawn a blackjack!";
-		cash = cash + (bid *2);
+		bid = bid * 3;
+		cash = cash + bid;
 		matchIsBlackjack = true;
 	}
 	
@@ -678,13 +679,38 @@ void gamePlay() {
 
 	}
 }
+void gameReset() {
+
+kingcount = 4;
+queencount = 4;
+jackcount = 4;
+tencount = 4;
+ninecount = 4;
+eightcount = 4;
+sevencount = 4;
+sixcount = 4;
+fivecount = 4;
+fourcount = 4;
+threecount = 4;
+twocount = 4;
+acecount = 4;
+dealingPlayer = 0;
+dealingDealer = 0;
+playerCardValue = 0;
+dealerCardValue = 0;
+playerChoice = 'n';
+
+}
 void gameLoop() {
 
+	do {
 
-bidding();
-cardInitialPlayer();
-cardInitialDealer();
-gamePlay();
+		bidding();
+		cardInitialPlayer();
+		cardInitialDealer();
+		gamePlay();
+		gameReset();
+	} while (cash < 1000);
 
 }
 
