@@ -60,7 +60,6 @@ void difficultySelection() {
 			std::cout << "Error";
 
 		}
-		std::cout << "\nCash is " << cash;
 }
 //Should be good to go
 void bidding() {
@@ -70,6 +69,7 @@ void bidding() {
 		
 		if (cash >= 200) {
 
+			std::cout << "\n\nYou have " << cash << " Cash total\n";
 			std::cout << "\nPlease enter how much you wish to bid (1 - 200)";
 			std::cin >> bid;
 		}
@@ -636,10 +636,13 @@ void gamePlay() {
 		
 		else if (playerChoice == 'D' || playerChoice == 'd') {
 
-			cash = cash - bid;
-			bid = bid + bid;
-			dealingPlayerGameplay();
-			playerDoubleDown = true;
+			if (bid <= cash * 2) {
+				cash = cash - bid;
+				bid = bid + bid;
+				dealingPlayerGameplay();
+				playerDoubleDown = true;
+			}
+			else std::cout << "You don't have enough cash to double down!";
 		}
 
 		else if (playerChoice == 'S' || playerChoice == 's');
