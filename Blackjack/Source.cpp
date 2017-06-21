@@ -33,7 +33,7 @@ bool dealerIsBlackjack = false;
 bool matchIsBlackjack = false;
 bool playerDoubleDown = false;
 
-//Need to balance this after adding in victory conditions
+//Running out of money needs a defeat check
 void difficultySelection() {
 	do {
 		std::cout << "Select Difficulty\n[E]asy\n[N]ormal\n[H]ard\n";
@@ -94,7 +94,7 @@ void bidding() {
 
 	cash = cash - bid;
 }
-//Should be good to go
+//Card value can be 22 if double ace
 void cardInitialPlayer() {
 	do {
 		
@@ -704,6 +704,11 @@ dealerCardValue = 0;
 playerChoice = 'n';
 
 }
+void victory() {
+	std::cout << "\n\nCongratulations, you have won!";
+	std::cout << "\n\nYou have " << cash << " Final Score\n";
+
+}
 void gameLoop() {
 
 	do {
@@ -723,7 +728,7 @@ int main()
 	difficultySelection();
 	gameLoop();
 
-
+	if (cash >= 1000) victory();
 
 	return 0;
 
