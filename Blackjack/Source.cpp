@@ -80,7 +80,7 @@ void bidding() {
 			std::cin >> bid;
 		}
 		
-		if (bid == 0 || bid > 200 || bid > cash) std::cout << "\nInvalid bid entry";
+		if (bid <= 0 || bid > 200 || bid > cash) std::cout << "\nInvalid bid entry";
 		
 		if (std::cin.fail()) {
 			
@@ -90,7 +90,7 @@ void bidding() {
 
 		}
 
-	} while (bid == 0 || bid > 200 || bid > cash);
+	} while (bid <= 0 || bid > 200 || bid > cash);
 
 	cash = cash - bid;
 }
