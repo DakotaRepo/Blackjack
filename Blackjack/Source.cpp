@@ -92,7 +92,7 @@ void bidding() {
 
 	cash = cash - bid;
 }
-//Card value can be 22 if double ace
+
 void cardInitialPlayer() {
 	do {
 		
@@ -223,6 +223,7 @@ void cardInitialPlayer() {
 
 	} while (dealingPlayer < 2);
 	dealingPlayer = 0;
+	if (playerCardValue == 22) playerCardValue = playerCardValue - 10;
 	std::cout << "\n";
 
 }
@@ -356,7 +357,7 @@ void cardInitialDealer() {
 	
 	} while (dealingDealer < 2);
 	dealingDealer = 0;
-
+	if (dealerCardValue == 22) dealerCardValue = dealerCardValue - 10;
 }
 void blackjackCheck() {
 
@@ -636,7 +637,7 @@ void gamePlay() {
 		
 		else if (playerChoice == 'D' || playerChoice == 'd') {
 
-			if (bid <= cash * 2) {
+			if (bid <= cash) {
 				cash = cash - bid;
 				bid = bid + bid;
 				dealingPlayerGameplay();
