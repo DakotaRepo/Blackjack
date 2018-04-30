@@ -34,7 +34,7 @@ bool matchIsBlackjack = false;
 bool playerDoubleDown = false;
 bool playerAceCard = false;
 bool dealerAceCard = false;
-
+// Sets the difficulty, affecting starting cash
 void difficultySelection() {
 	do {
 		std::cout << "Select Difficulty\n[E]asy\n[N]ormal\n[H]ard\n";
@@ -62,6 +62,7 @@ void difficultySelection() {
 
 		}
 }
+// Sets the player bid
 void bidding() {
 	
 	do {
@@ -94,7 +95,7 @@ void bidding() {
 
 	cash = cash - bid;
 }
-
+// Draws initial cards for the player and dealer
 void cardInitialPlayer() {
 	do {
 		
@@ -363,6 +364,7 @@ void cardInitialDealer() {
 	dealingDealer = 0;
 	if (dealerCardValue == 22) dealerCardValue = dealerCardValue - 10;
 }
+// Checks for blackjack conditions before the round starts
 void blackjackCheck() {
 
 	matchIsBlackjack = false;
@@ -388,6 +390,7 @@ void blackjackCheck() {
 		matchIsBlackjack = true;
 	}
 }
+// Draws additional cards for the player (if they choose) and the dealer (if necessary)
 void dealingPlayerGameplay() {
 	do {
 
@@ -636,6 +639,7 @@ void dealingDealerGameplay() {
 		dealerAceCard = false;
 	}
 }
+// Handles the player and dealer interaction with the round
 void gamePlay() {
 
 	blackjackCheck();
@@ -699,6 +703,7 @@ void gamePlay() {
 
 	}
 }
+// Resets parameters to their default for the next round
 void gameReset() {
 
 kingcount = 4;
@@ -723,13 +728,16 @@ dealerAceCard = false;
 playerChoice = 'n';
 
 }
+// Victory message display
 void victory() {
 	std::cout << "\n\nCongratulations, you have won!";
 	std::cout << "\n\nYou have " << cash << " Final Score\n";
 }
+// Defeat message display
 void defeat() {
 	std::cout << "\n\nUnfortunately, you have lost\n";
 }
+// Allows the game to continue until victory or defeat conditions are met
 void gameLoop() {
 
 	do {
