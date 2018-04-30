@@ -33,7 +33,6 @@ bool dealerIsBlackjack = false;
 bool matchIsBlackjack = false;
 bool playerDoubleDown = false;
 
-//Running out of money needs a defeat check
 void difficultySelection() {
 	do {
 		std::cout << "Select Difficulty\n[E]asy\n[N]ormal\n[H]ard\n";
@@ -61,7 +60,6 @@ void difficultySelection() {
 
 		}
 }
-//Should be good to go
 void bidding() {
 	
 	do {
@@ -224,7 +222,7 @@ void cardInitialPlayer() {
 		}
 
 	} while (dealingPlayer < 2);
-
+	dealingPlayer = 0;
 	std::cout << "\n";
 
 }
@@ -357,7 +355,7 @@ void cardInitialDealer() {
 		}
 	
 	} while (dealingDealer < 2);
-
+	dealingDealer = 0;
 
 }
 void blackjackCheck() {
@@ -501,6 +499,7 @@ void dealingPlayerGameplay() {
 		}
 
 	} while (dealingPlayer < 1);
+	dealingPlayer = 0;
 }
 void dealingDealerGameplay() {
 	do {
@@ -617,7 +616,8 @@ void dealingDealerGameplay() {
 			std::cout << "\nError generating card";
 		}
 
-	} while (dealingPlayer < 1);
+	} while (dealingDealer < 1);
+	dealingDealer = 0;
 }
 void gamePlay() {
 
@@ -707,7 +707,9 @@ playerChoice = 'n';
 void victory() {
 	std::cout << "\n\nCongratulations, you have won!";
 	std::cout << "\n\nYou have " << cash << " Final Score\n";
-
+}
+void defeat() {
+	std::cout << "\n\nUnfortunately, you have lost\n";
 }
 void gameLoop() {
 
@@ -718,7 +720,7 @@ void gameLoop() {
 		cardInitialDealer();
 		gamePlay();
 		gameReset();
-	} while (cash < 1000);
+	} while (cash < 1000 && cash > 0);
 
 }
 
@@ -729,6 +731,7 @@ int main()
 	gameLoop();
 
 	if (cash >= 1000) victory();
+	if (cash <= 0) defeat();
 
 	return 0;
 
