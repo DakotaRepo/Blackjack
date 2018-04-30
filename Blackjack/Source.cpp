@@ -32,6 +32,8 @@ bool playerIsBlackjack = false;
 bool dealerIsBlackjack = false;
 bool matchIsBlackjack = false;
 bool playerDoubleDown = false;
+bool playerAceCard = false;
+bool dealerAceCard = false;
 
 void difficultySelection() {
 	do {
@@ -68,13 +70,13 @@ void bidding() {
 		if (cash >= 200) {
 
 			std::cout << "\n\nYou have " << cash << " Cash total\n";
-			std::cout << "\nPlease enter how much you wish to bid (1 - 200)";
+			std::cout << "\n\nPlease enter how much you wish to bid (1 - 200)";
 			std::cin >> bid;
 		}
 		
 		if (cash < 200) {
 
-			std::cout << "\nPlease enter how much you wish to bid (1 - " << cash << ")";
+			std::cout << "\n\nPlease enter how much you wish to bid (1 - " << cash << ")";
 			std::cin >> bid;
 		}
 		
@@ -104,6 +106,7 @@ void cardInitialPlayer() {
 				acecount--;
 				dealingPlayer++;
 				playerCardValue = playerCardValue + 11;
+				playerAceCard = true;
 				std::cout << "\nPlayer Card is Ace";
 			}
 			break;
@@ -238,6 +241,7 @@ void cardInitialDealer() {
 				acecount--;
 				dealingDealer++;
 				dealerCardValue = dealerCardValue + 11;
+				dealerAceCard = true;
 				std::cout << "\nDealer Card is Ace";
 			}
 			break;
@@ -393,7 +397,8 @@ void dealingPlayerGameplay() {
 			if (acecount >= 1) {
 				acecount--;
 				dealingPlayer++;
-				playerCardValue++;
+				playerCardValue = playerCardValue + 11;
+				playerAceCard = true;
 				std::cout << "\nPlayer Card is Ace";
 			}
 			break;
@@ -501,6 +506,11 @@ void dealingPlayerGameplay() {
 
 	} while (dealingPlayer < 1);
 	dealingPlayer = 0;
+
+	if (playerCardValue > 21 && playerAceCard == true) {
+		playerCardValue = playerCardValue - 10;
+		playerAceCard = false;
+	}
 }
 void dealingDealerGameplay() {
 	do {
@@ -511,7 +521,8 @@ void dealingDealerGameplay() {
 			if (acecount >= 1) {
 				acecount--;
 				dealingDealer++;
-				dealerCardValue++;
+				dealerCardValue = dealerCardValue + 11;
+				dealerAceCard = true;
 				std::cout << "\nDealer Card is Ace\n";
 			}
 			break;
@@ -619,6 +630,11 @@ void dealingDealerGameplay() {
 
 	} while (dealingDealer < 1);
 	dealingDealer = 0;
+
+	if (dealerCardValue > 21 && dealerAceCard == true) {
+		dealerCardValue = dealerCardValue - 10;
+		dealerAceCard = false;
+	}
 }
 void gamePlay() {
 
@@ -702,6 +718,8 @@ dealingPlayer = 0;
 dealingDealer = 0;
 playerCardValue = 0;
 dealerCardValue = 0;
+playerAceCard = false;
+dealerAceCard = false;
 playerChoice = 'n';
 
 }
